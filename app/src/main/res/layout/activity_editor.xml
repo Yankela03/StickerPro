@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/background">
+
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+        android:layout_width="0dp" android:layout_height="?attr/actionBarSize" android:background="@color/background"
+        android:title="@string/title_editor" app:navigationIcon="@drawable/ic_check_circle" app:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Fixed canvas: crop gestures never scroll the editor. -->
+    <FrameLayout android:id="@+id/previewContainer" android:layout_width="0dp" android:layout_height="320dp"
+        android:layout_marginHorizontal="12dp" android:background="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.media3.ui.PlayerView android:id="@+id/playerView" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:visibility="gone" app:resize_mode="fit" app:use_controller="false" />
+        <ImageView android:id="@+id/imagePreview" android:layout_width="match_parent" android:layout_height="match_parent"
+            android:contentDescription="@string/content_desc_sticker_preview" android:scaleType="fitCenter" android:visibility="gone" />
+        <com.stickermaker.whatsapp.ui.widget.CropOverlayView android:id="@+id/cropOverlay"
+            android:layout_width="match_parent" android:layout_height="match_parent" />
+        <ImageButton android:id="@+id/btnPlayPause" android:layout_width="64dp" android:layout_height="64dp"
+            android:layout_gravity="center" android:background="@drawable/editor_play_button_bg"
+            android:contentDescription="@string/play_pause" android:padding="18dp" android:src="@drawable/ic_pause"
+            android:tint="@color/white" android:visibility="gone" />
+        <TextView android:id="@+id/tvCropHintOverlay" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal" android:layout_marginTop="12dp"
+            android:background="@drawable/editor_hint_bg" android:paddingHorizontal="12dp" android:paddingVertical="6dp"
+            android:text="@string/crop_short_hint" android:textColor="@color/white" android:textSize="12sp" />
+    </FrameLayout>
+
+    <!-- Only controls scroll; preview and crop box remain stationary. -->
+    <androidx.core.widget.NestedScrollView android:id="@+id/editorScroll" android:layout_width="0dp" android:layout_height="0dp"
+        android:clipToPadding="false" android:fillViewport="true" app:layout_constraintTop_toBottomOf="@id/previewContainer"
+        app:layout_constraintBottom_toTopOf="@id/adContainer" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:id="@+id/trimSection" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingTop="16dp" android:paddingBottom="20dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center_vertical" android:orientation="horizontal">
+                <TextView android:id="@+id/tvTrimInstructions" android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:textColor="@color/text_primary" android:textSize="15sp"
+                    android:textStyle="bold" tools:text="Select up to 5.0 seconds" />
+                <TextView android:id="@+id/tvSelectionTime" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:background="@drawable/editor_time_bg" android:paddingHorizontal="10dp" android:paddingVertical="5dp"
+                    android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" tools:text="0:00.0 – 0:05.0" />
+            </LinearLayout>
+            <com.stickermaker.whatsapp.ui.widget.VideoTrimView android:id="@+id/trimView"
+                android:layout_width="match_parent" android:layout_height="88dp" android:layout_marginTop="12dp" />
+            <TextView android:id="@+id/tvCurrentTime" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" android:gravity="center" android:textColor="@color/text_secondary"
+                android:textSize="12sp" tools:text="Current frame 0:02.4" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnResetCrop"
+                style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:minHeight="40dp"
+                android:text="@string/reset_crop" android:textAllCaps="false" android:textColor="@color/brand_green" />
+            <TextView android:id="@+id/tvCropInstructions" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/crop_instructions" android:visibility="gone" />
+            <CheckBox android:id="@+id/cbStaticSticker" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:buttonTint="@color/brand_green" android:text="@string/label_static_sticker" android:textColor="@color/text_primary" />
+            <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/swRemoveBackground"
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"
+                android:text="@string/label_remove_background" android:textColor="@color/text_primary" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnConvert"
+                style="@style/Theme.StickerMaker.PrimaryButton" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="14dp" android:minHeight="56dp"
+                android:text="@string/btn_convert" android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout android:id="@+id/adContainer" android:layout_width="0dp" android:layout_height="wrap_content"
+        android:minHeight="50dp" android:background="@color/surface" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+    <View android:id="@+id/loadingScrim" android:layout_width="0dp" android:layout_height="0dp"
+        android:background="#CC000000" android:clickable="true" android:focusable="true" android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+    <ProgressBar android:id="@+id/progressOverlay" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:visibility="gone" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+    <TextView android:id="@+id/tvProcessing" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" android:text="@string/processing_message" android:textColor="@color/white"
+        android:visibility="gone" app:layout_constraintTop_toBottomOf="@id/progressOverlay"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

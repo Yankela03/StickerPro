@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <cache-path name="temp_media" path="temp/" />
+    <files-path name="stickers" path="stickers/" />
+    <external-files-path name="stickers_external" path="stickers/" />
+</paths>

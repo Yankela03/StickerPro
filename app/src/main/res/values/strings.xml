@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StickerPro</string>
+
+    <!-- Home -->
+    <string name="home_tagline">Turn videos and photos into WhatsApp stickers — 100%% on your phone.</string>
+    <string name="btn_create_sticker">Create WhatsApp Sticker</string>
+    <string name="btn_create_pack">Create New Pack</string>
+    <string name="btn_tiktok_link">Create from Online Video</string>
+    <string name="tiktok_dialog_title">Paste a video link</string>
+    <string name="tiktok_dialog_message">Public videos can be downloaded when the source exposes a downloadable copy. Only download content you have permission to use.</string>
+    <string name="tiktok_download">Download</string>
+    <string name="tiktok_downloading">Downloading online video…</string>
+    <string name="tiktok_download_failed">Couldn’t download video</string>
+    <string name="dialog_choose_media_type">Choose Media Type</string>
+    <string name="btn_choose_video">Choose Video</string>
+    <string name="btn_choose_image">Choose Image</string>
+    <string name="btn_paste_video_link">Paste Video Link</string>
+    <string name="btn_view_stickers">View Created Stickers</string>
+    <string name="btn_settings">Settings</string>
+
+    <!-- Editor -->
+    <string name="title_editor">Edit Sticker</string>
+    <string name="trim_instructions">Drag the handles to pick up to %1$.1fs of video</string>
+    <string name="crop_instructions">Drag the corners to crop (optional)</string>
+    <string name="crop_short_hint">Drag the corners to frame your sticker</string>
+    <string name="reset_crop">Reset crop</string>
+    <string name="play_pause">Play or pause preview</string>
+    <string name="current_frame_time">Current frame %1$s</string>
+    <string name="selection_time_range">%1$s – %2$s</string>
+    <string name="btn_convert">Convert to Sticker</string>
+    <string name="processing_message">Creating your sticker…</string>
+    <string name="label_static_sticker">Make static sticker (first frame only)</string>
+    <string name="label_remove_background">Remove Background (Beta)</string>
+
+
+    <!-- Export -->
+    <string name="title_export">Your Sticker</string>
+    <string name="btn_add_to_whatsapp">Add to WhatsApp</string>
+    <string name="btn_add_to_whatsapp_min_3">Add to WhatsApp (Min 3 stickers)</string>
+    <string name="btn_watch_ad_to_save">Watch a short ad to save your sticker to WhatsApp</string>
+    <string name="export_success">Sticker saved to your phone! Tap below to add it to WhatsApp.</string>
+    <string name="sticker_pack_name">My Stickers</string>
+    <string name="sticker_pack_publisher">Created with StickerPro</string>
+
+    <!-- Gallery -->
+    <string name="title_gallery">Created Stickers</string>
+    <string name="gallery_empty">No stickers yet. Create your first one!</string>
+
+    <!-- Settings -->
+    <string name="title_settings">Settings</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_body">Video and image editing happens locally on your device. Your media is not sent to our advertising or analytics providers, and temporary conversion files are deleted automatically. The app uses AppLovin MAX to show ads and Firebase for analytics and crash reporting. These services may process device identifiers, diagnostics, interactions, and approximate location inferred from your internet address, subject to your consent choices and our privacy policy.</string>
+    <string name="view_privacy_policy">View full privacy policy</string>
+    <string name="about_title">About</string>
+    <string name="about_body">StickerPro lets you turn short videos and images into WhatsApp-compatible stickers, quickly and privately.</string>
+    <string name="version_label">Version %1$s</string>
+
+    <!-- Errors -->
+    <string name="error_invalid_file">This file can\'t be used. Please choose a valid image or video.</string>
+    <string name="error_invalid_tiktok_link">Enter a valid supported HTTPS video link.</string>
+    <string name="error_permission_denied">Permission denied. Storage access is needed to pick media.</string>
+    <string name="error_video_too_large">This video is too large to process. Please choose a shorter clip.</string>
+    <string name="error_conversion_failed">Something went wrong while creating the sticker. Please try again.</string>
+    <string name="error_whatsapp_not_installed">WhatsApp isn\'t installed on this device.</string>
+    <string name="error_ad_not_ready">Ad isn\'t ready yet, saving sticker directly.</string>
+    <string name="creation_limit_reached">Creation limit reached: You can create a maximum of 3 stickers for free. Watch an ad to create another one?</string>
+    <string name="btn_watch_ad">Watch Ad</string>
+    <string name="btn_cancel">Cancel</string>
+
+    <string name="content_desc_sticker_preview">Sticker preview</string>
+    <string name="content_desc_app_logo">App logo</string>
+</resources>
